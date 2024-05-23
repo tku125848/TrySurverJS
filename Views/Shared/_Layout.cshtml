@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+    
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />    
+    <title>修繕申請單</title>
+</head>
+<body>
+
+    <div>
+        <section class="top">
+            <div class="container py-5">
+                <div class="row title">
+                    <div class="col-12 col-lg-6">
+                        <h1>
+                            AA
+                        </h1>
+                    </div>
+                    <div class="col-12 col-lg-6 justify-content-end">
+                        <p>BB<span> 修繕系統</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="header">
+            <div class="container py-4">
+                <div class="row">
+                    <h2 class="col-12">修繕申請單</h2>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+    <footer class="border-top footer text-muted">
+@*         <div class="container">
+            &copy; 2024 - WebApplication1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div> *@
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/survey-jquery/survey.jquery.min.js"></script>
+
+    @* SurveyJS *@
+    <link href="https://unpkg.com/survey-jquery/defaultV2.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+
+    @* Section Scripts *@
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

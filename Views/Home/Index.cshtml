@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div id="surveyContainer"></div>
+@section Scripts {
+
+        // 讀取設定檔
+    <script src='~/lib/json/campus.js'></script>
+    <script>
+        // surveyjs json 設定檔
+        const surveyJson = {
+            "locale": "zh-tw",
+            // 完成按鈕修改
+            "completeText": {
+                "zh-tw": "下一步"
+            },
+            questions: [
+                {
+                    name: "building",
+                    type: "dropdown",
+                    title: "選擇建築物",
+                    isRequired: true,
+                    choices: aachoices, // 下拉
+                },
+                {
+                    name: "floor",
+                    type: "text",
+                    title: "輸入樓層",
+                },
+                {
+                    name: "location",
+                    type: "text",
+                    title: "地點",
+                    isRequired: true,
+                    validators: [{ type: "text", minLength: 1 }]
+                }
+            ]
+        };
+
+
+
+        // 提交問卷時的處理函式
+        const survey = new Survey.Model(surveyJson);
+
+        function alertResults(sender) {
+            const results = JSON.stringify(sender.data);
+            alert(sender.data.building);
+            alert(sender.data.floor);
+            alert(sender.data.location);
+            alert(results);
+            //window.location = "http://127.0.0.1/" + sender.data.building + "/" + sender.data.floor + sender.data.location;
+            // saveSurveyResults(
+            //     "https://your-web-service.com/" + SURVEY_ID,
+            //     sender.data
+            // )
+        }
+
+        survey.onComplete.add(alertResults);
+
+        $(function () {
+            $("#surveyContainer").Survey({ model: survey });
+        });
+    </script>
+}
